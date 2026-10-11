@@ -1,10 +1,11 @@
 import redis
+
 from app.core.config import settings
 
-# 创建redis连接池，复用连接（关键！高并发不要每次新建连接）
-redis_pool = redis.ConnectionPool(
+# 全局单例（redis-py 内部自带连接池，线程安全）
+redis_client = redis.Redis(
     host=settings.REDIS_HOST,
     port=settings.REDIS_PORT,
-    decode_responses=True
+    password=settings.REDIS_PASSWORD or None,
+    decode_responses=True,
 )
-redis = redis.Redis(connection_pool=redis_pool)

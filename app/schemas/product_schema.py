@@ -1,11 +1,12 @@
+from typing import Optional
+
 from pydantic import BaseModel
 
-# 商品响应结构
+
 class ProductResp(BaseModel):
     id: int
     product_name: str
+    description: Optional[str] = None
+    image: Optional[str] = None
     stock: int
     price: float
-
-    class Config:
-        from_attributes = True

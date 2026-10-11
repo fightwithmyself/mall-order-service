@@ -1,8 +1,9 @@
 fastapi
-uvicorn
+uvicorn[standard]
 redis
 pika
 sqlalchemy
 python-dotenv
 pymysql
+cryptography
 pydantic-settings
